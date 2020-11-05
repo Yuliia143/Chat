@@ -1,0 +1,224 @@
+p {
+  margin: 5px;
+}
+
+.App {
+  display: grid;
+  grid-template-columns: 25% auto;
+  overflow: hidden;
+}
+
+.sidebar {
+  border-right: 1px solid lightgray;
+  box-sizing: border-box;
+  height: 100vh;
+}
+
+.sidebar__header {
+  padding: 10px;
+  background-color: #f2f2f2;
+  display: grid;
+  grid-gap: 16px;
+}
+
+.search label {
+  position: relative;
+}
+
+.search svg {
+  width: 13px;
+  height: 13px;
+  position: absolute;
+  top: 25%;
+  left: 5%;
+}
+
+.search input {
+  padding: 10px 5px 10px 35px;
+  border-radius: 25px;
+  outline: none;
+  border: 1px solid lightgray;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sidebar__content {
+  padding: 10px 0 10px;
+}
+
+.sidebar__content h1 {
+  color: #6ec5e1;
+  font-weight: 400;
+  padding-left: 10px;
+}
+
+.contacts__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contacts__item {
+  display: grid;
+  grid-template-columns: 50px auto;
+  grid-gap: 16px;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+  padding: 15px 10px;
+  cursor: pointer;
+}
+
+.contacts__content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+
+  & p {
+    margin: 0;
+  }
+}
+
+.contacts__date {
+  font-size: 12px;
+  text-align: end;
+}
+
+.contacts__message {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #757575;
+}
+
+.profile__img {
+  width: 50px;
+  height: 50px;
+  position: relative;
+}
+
+.profile__img svg {
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  bottom: 0;
+  right: 0;
+}
+
+.profile__img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.chat__container {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 71px 1fr  85px;
+  overflow: hidden;
+}
+
+.chat__header {
+  background-color: #f2f2f2;
+
+  & .contacts__item {
+    padding: 10px;
+  }
+}
+
+.chat__content {
+  padding: 10px;
+  overflow-y: scroll;
+
+  & h1 {
+    text-align: center;
+    color: #6ec5e1;
+    font-weight: 400;
+  }
+}
+
+.message__container {
+  display: grid;
+  grid-template-columns: 70px auto;
+  margin-bottom: 10px;
+  max-width: 90%;
+}
+
+.message__container--right {
+  display: grid;
+  margin-bottom: 10px;
+  max-width: 90%;
+  margin-left: auto;
+
+  .message__content {
+    display: grid;
+  }
+
+  .message__date {
+    padding-left: 0;
+    text-align: end;
+  }
+
+  .message__text {
+    background-color: #E0E0E0;
+    color: black;
+    margin-left: auto;
+  }
+}
+
+.message__content {
+  display: grid;
+}
+
+.message__date {
+  padding-left: 15px;
+}
+
+.message__text {
+  background-color: #3C4154;
+  color: white;
+  border-radius: 25px;
+  padding: 7px 15px;
+  width: fit-content;
+}
+
+.message__date {
+  font-size: 13px;
+}
+
+.send-form__container {
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-top: 1px solid lightgray;
+}
+
+.send-form label {
+  position: relative;
+}
+
+.send-form svg {
+  width: 17px;
+  height: 17px;
+}
+
+.send-form svg:hover {
+  transform: scale(1.2);
+}
+
+.send-form input {
+  padding: 13px 50px 13px 20px;
+  border-radius: 17px;
+  outline: none;
+  border: 1px solid lightgray;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.send-form__button {
+  position: absolute;
+  top: 15%;
+  right: 15px;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
