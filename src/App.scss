@@ -6,6 +6,42 @@ p {
   display: grid;
   grid-template-columns: 25% auto;
   overflow: hidden;
+  position: relative;
+}
+.notification__container{
+  width: 350px;
+  max-width: 350px;
+  position: absolute;
+  right: 0;
+  bottom: 85px;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  align-items: center;
+  grid-gap: 16px;
+  background: #84c5e1;
+  padding: 15px 20px;
+  color: white;
+  border-top-left-radius: 25px;
+   &--hide{
+     display: none;
+   }
+}
+.notification__button{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  & svg{
+    height: 13px;
+    width: 13px;
+    fill: white;
+  }
+}
+.notification__content{
+  display: grid;
 }
 
 .sidebar {

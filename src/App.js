@@ -5,6 +5,7 @@ import Chat from "./components/Chat";
 import {Provider} from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import {store, persistor} from "./store";
+import Notification from "./components/Notification";
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
                 <PersistGate loading={null} persistor={persistor}>
                     <Sidebar/>
                     <Chat/>
+                    <Notification/>
                 </PersistGate>
             </Provider>
         </div>

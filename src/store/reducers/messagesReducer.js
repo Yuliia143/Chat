@@ -7,10 +7,12 @@ const initialState = {
             {contactId: '1111', value: 'Yo', date: Date.now()},
             {contactId: '3', value: 'What are you doing?', date: Date.now()}],
     },
+    newMessage: {},
 };
 
 export default function (state = initialState, action) {
     let messagesHistory = {};
+    let newMessage = {};
     switch (action.type) {
         case 'SEND_MESSAGE':
             messagesHistory = Object.assign({}, state.messagesHistory);
@@ -28,9 +30,17 @@ export default function (state = initialState, action) {
                 contactId: action.payload.contactId,
             }
             messagesHistory[message.contactId].push(message);
+            newMessage = message;
             return {
                 messagesHistory,
+                newMessage,
             };
+        case 'CLEAR_NEW-MESSAGE':
+            newMessage = {};
+            return {
+                ...state,
+                newMessage,
+            }
         default:
             return state;
     }
