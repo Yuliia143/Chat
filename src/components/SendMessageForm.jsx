@@ -1,42 +1,42 @@
 import React, {useState} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {getAnswer} from "../store/actions/messages";
 
-const SendMessageForm = (props) => {
-    const [message, setMessage] = useState({
-        value: '',
-        date: Date.now(),
-        contactId: props.user.id,
-    });
+const SendMessageForm = ({user}) => {
+    const activeContact = useSelector((state => state.contacts.activeContact))
+    const [value, setValue] = useState('');
 
     const handleMessageQuery = (event) => {
-        setMessage({...message, value: event.target.value});
+        setValue(event.target.value);
     };
 
     const dispatch = useDispatch();
 
-    const sendMessage = (e, message) => {
+    const sendMessage = (e, value) => {
         e.preventDefault();
+        const messageId = '_' + Math.random().toString(36).substr(2, 9);
         dispatch({
             type: 'SEND_MESSAGE', payload: {
-                message,
-                activeContact: props.activeContact
+                message: {
+                    id: messageId,
+                    value,
+                    contactId: activeContact.id,
+                    date: Date.now(),
+                    author: user.id
+                },
+                activeContact: activeContact
             }
         });
-        dispatch(getAnswer(props.activeContact.id));
-        setMessage({
-            value: '',
-            date: Date.now(),
-            contactId: props.user.id,
-        });
+        dispatch(getAnswer(activeContact.id, messageId));
+        setValue('');
     }
 
     return (
         <div className="send-form__container">
-            <form className="send-form" onSubmit={(e) => sendMessage(e, message)}>
+            <form className="send-form" onSubmit={(e) => sendMessage(e, value)}>
                 <label>
                     <input
-                        value={message.value}
+                        value={value}
                         type="text"
                         className="send-form__input"
                         placeholder="Type your message"

@@ -2,31 +2,30 @@ import React from "react";
 import ContactsItem from "./ContactsItem";
 import {useSelector} from "react-redux";
 
-const ContactsList = (props) => {
+const ContactsList = ({contacts}) => {
     const messagesHistory = useSelector(state => state.messages.messagesHistory);
-
     const lastMessages = [];
     for (const key in messagesHistory) {
-        lastMessages.push(messagesHistory[key][messagesHistory[key].length - 1]);
+        const lastMessage  = messagesHistory[key][messagesHistory[key].length - 1];
+        lastMessages.push(lastMessage);
     }
-
     const sortedLastMessages = lastMessages.sort((a, b) => b.date - a.date);
 
     const idIndex = sortedLastMessages.map(message => message.contactId);
-    props.contacts.forEach(contact => {
-        if (idIndex.indexOf(contact.id) === -1) {
-            idIndex.push(contact.id);
-        }
-    })
-    console.log(idIndex, 'idIndex')
+    contacts.sort(function (a, b) {
 
-    props.contacts.sort(function (a, b) {
-        return idIndex.indexOf(a.id) - idIndex.indexOf(b.id);
+        let indexA = idIndex.indexOf(a.id);
+        let indexB = idIndex.indexOf(b.id);
+        if (indexA === -1) indexA = contacts.length - 1;
+        if (indexB === -1) indexB = contacts.length - 1;
+        if (indexA < indexB)  return -1;
+        if (indexA > indexB) return 1;
+        return 0;
+        /*return indexA - indexB;*/
     });
-
     return (
         <ul className="contacts__list">
-            {props.contacts.map((contact) => <ContactsItem key={contact.id} contact={contact}/>)}
+            {contacts.map((contact) => <ContactsItem key={contact.id} contact={contact}/>)}
         </ul>
     );
 };

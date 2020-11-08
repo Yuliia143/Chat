@@ -8,12 +8,18 @@ p {
   overflow: hidden;
   position: relative;
 }
-.notification__container{
+.notification {
   width: 350px;
   max-width: 350px;
   position: absolute;
   right: 0;
   bottom: 85px;
+  display: grid;
+  grid-template-rows: auto;
+  grid-auto-flow: row;
+  grid-gap: 8px;
+}
+.notification__container{
   display: grid;
   grid-template-columns: 1fr 5fr;
   align-items: center;
@@ -22,6 +28,8 @@ p {
   padding: 15px 20px;
   color: white;
   border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  position: relative;
    &--hide{
      display: none;
    }

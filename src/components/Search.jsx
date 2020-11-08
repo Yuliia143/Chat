@@ -1,8 +1,8 @@
 import React from "react";
 
-const Search = (props) => {
+const Search = ({setQuery, query}) => {
     const handleSearchQuery = (event) => {
-        props.setQuery(event.target.value);
+        setQuery(event.target.value);
     };
 
     return (
@@ -15,7 +15,7 @@ const Search = (props) => {
                 </svg>
 
                 <input
-                    value={props.query}
+                    value={query}
                     type="text"
                     className="search__input"
                     placeholder="Search or start new chat"
