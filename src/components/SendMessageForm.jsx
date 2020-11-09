@@ -1,15 +1,20 @@
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getAnswer} from "../store/actions/messages";
 
-const SendMessageForm = ({user}) => {
+const SendMessageForm = ({user, messagesHistory}) => {
     const dispatch = useDispatch();
     const activeContact = useSelector((state => state.contacts.activeContact))
     const [value, setValue] = useState('');
+    const inputRef = useRef(null)
 
     const handleMessageQuery = (event) => {
         setValue(event.target.value);
     };
+
+    useEffect(() =>  {
+        inputRef.current.focus()
+    }, [messagesHistory])
 
     const sendMessage = (e, value) => {
         e.preventDefault();
@@ -40,6 +45,7 @@ const SendMessageForm = ({user}) => {
                         className="send-form__input"
                         placeholder="Type your message"
                         onChange={handleMessageQuery}
+                        ref={inputRef}
                     />
                     <button className="send-form__button">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

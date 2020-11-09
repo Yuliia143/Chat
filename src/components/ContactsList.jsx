@@ -10,9 +10,7 @@ const ContactsList = ({contacts, isVisible, toggleIsVisible}) => {
         lastMessages.push(lastMessage);
     }
     const idIndex = lastMessages.sort((a, b) => b.date - a.date).map(message => message.contactId);
-    console.log(lastMessages.sort((a, b) => b.date - a.date), 'message')
 
-    console.log(idIndex, 'id')
     contacts.sort(function (a, b) {
         let indexA = idIndex.indexOf(a.id);
         let indexB = idIndex.indexOf(b.id);

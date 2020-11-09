@@ -12,7 +12,7 @@ const Chat = ({isVisible, toggleIsVisible}) => {
         <div className="chat__container">
             <ChatHeader isVisibleMenu={isVisible} toggleIsVisibleMenu={toggleIsVisible}/>
             <ChatContent messagesHistory={messagesHistory}/>
-            <SendMessageForm messagesHistory={messagesHistory} user={user} activeContact={activeContact}/>
+            <SendMessageForm messagesHistory={messagesHistory} user={user}/>
         </div>
     );
 };
