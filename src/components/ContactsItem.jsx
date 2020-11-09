@@ -6,6 +6,7 @@ import moment from "moment";
 const ContactsItem = ({contact, isVisible, toggleIsVisible}) => {
     const dispatch = useDispatch();
     const messagesHistory = useSelector(state => state.messages.messagesHistory);
+    const activeContact = useSelector(state => state.contacts.activeContact);
 
     const getLastMessage = (contactId) => {
         return contact.id in messagesHistory ? messagesHistory[contactId][messagesHistory[contactId].length - 1] : '';
@@ -17,7 +18,7 @@ const ContactsItem = ({contact, isVisible, toggleIsVisible}) => {
     }
 
     return (
-        <li className="contacts__item" key={contact.id}
+        <li className={activeContact.id === contact.id? 'contacts__item contacts__item--active' : 'contacts__item'} key={contact.id}
             onClick={handleClickContact}>
             <ProfileImg contact={contact}/>
             <div className="contacts__content">

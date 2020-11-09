@@ -8,12 +8,15 @@ const SendMessageForm = ({user, messagesHistory}) => {
     const [value, setValue] = useState('');
     const inputRef = useRef(null)
 
+    const handleFocus = () => {
+        inputRef.current.focus();
+    }
     const handleMessageQuery = (event) => {
         setValue(event.target.value);
     };
 
-    useEffect(() =>  {
-        inputRef.current.focus()
+    useEffect(() => {
+        handleFocus();
     }, [messagesHistory])
 
     const sendMessage = (e, value) => {
@@ -33,6 +36,7 @@ const SendMessageForm = ({user, messagesHistory}) => {
         });
         dispatch(getAnswer(activeContact.id, messageId));
         setValue('');
+        handleFocus();
     }
 
     return (

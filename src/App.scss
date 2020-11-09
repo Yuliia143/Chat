@@ -117,6 +117,9 @@
     border-bottom: 1px solid lightgray;
     padding: 15px 10px;
     cursor: pointer;
+    &--active{
+      background: #84c5e1;
+    }
   }
 
   &__content {
