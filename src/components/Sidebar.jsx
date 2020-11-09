@@ -4,7 +4,7 @@ import Search from "./Search";
 import ContactsList from "./ContactsList";
 import ProfileImg from "./ProfileImg";
 
-const Sidebar = () => {
+const Sidebar = ({isVisible, toggleIsVisible}) => {
     const contacts = useSelector(state => state.contacts.contactsList);
     const user = useSelector(state => state.auth.user);
     const [query, setQuery] = useState('');
@@ -16,14 +16,14 @@ const Sidebar = () => {
     }
 
     return (
-        <div className="sidebar">
+        <div className={isVisible ? 'sidebar sidebar--active' : 'sidebar'}>
             <div className="sidebar__header">
                 <ProfileImg contact={user}/>
                 <Search query={query} setQuery={setQuery}/>
             </div>
             <div className="sidebar__content">
                 <h1>Chats</h1>
-                <ContactsList contacts={filteredContacts()}/>
+                <ContactsList contacts={filteredContacts()} isVisible={isVisible} toggleIsVisible={toggleIsVisible}/>
             </div>
         </div>
     );

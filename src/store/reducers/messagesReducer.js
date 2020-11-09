@@ -4,10 +4,25 @@ const initialState = {
     messagesHistory: {
         '1': [{contactId: '1', value: 'Hello', date: moment(new Date()).subtract('1', 'hour').toDate(), author: '1'},
             {contactId: '1', value: 'Hi', date: moment(new Date()).subtract('20', 'minutes').toDate(), author: '1111'},
-            {contactId: '1', value: 'How are you?', date: moment(new Date()).subtract('10', 'minutes').toDate(), author: '1'}],
-        '3': [{contactId: '3', value: 'Hi, there', date: moment(new Date()).subtract('1', 'hour').toDate(), author: '3'},
+            {
+                contactId: '1',
+                value: 'How are you?',
+                date: moment(new Date()).subtract('10', 'minutes').toDate(),
+                author: '1'
+            }],
+        '3': [{
+            contactId: '3',
+            value: 'Hi, there',
+            date: moment(new Date()).subtract('1', 'hour').toDate(),
+            author: '3'
+        },
             {contactId: '3', value: 'Yo', date: moment(new Date()).subtract('20', 'minutes').toDate(), author: '1111'},
-            {contactId: '3', value: 'What are you doing?', date: moment(new Date()).subtract('5', 'minutes').toDate(), author: '3'}],
+            {
+                contactId: '3',
+                value: 'What are you doing?',
+                date: moment(new Date()).subtract('5', 'minutes').toDate(),
+                author: '3'
+            }],
     },
     newMessages: [],
 };

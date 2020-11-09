@@ -3,14 +3,13 @@ import {useDispatch, useSelector} from "react-redux";
 import {getAnswer} from "../store/actions/messages";
 
 const SendMessageForm = ({user}) => {
+    const dispatch = useDispatch();
     const activeContact = useSelector((state => state.contacts.activeContact))
     const [value, setValue] = useState('');
 
     const handleMessageQuery = (event) => {
         setValue(event.target.value);
     };
-
-    const dispatch = useDispatch();
 
     const sendMessage = (e, value) => {
         e.preventDefault();

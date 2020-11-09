@@ -1,4 +1,4 @@
-const initialState  = {
+const initialState = {
     user: {
         id: '1111',
         name: 'Yuliia',

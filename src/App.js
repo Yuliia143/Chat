@@ -1,19 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.scss';
 import Sidebar from "./components/Sidebar";
 import Chat from "./components/Chat";
 import {Provider} from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
+import {PersistGate} from "redux-persist/integration/react";
 import {store, persistor} from "./store";
 import Notification from "./components/Notification";
 
-function App() {
+const App = () => {
+    const [isVisible, toggleIsVisible] = useState(false);
     return (
         <div className="App">
             <Provider store={store}>
                 <PersistGate loading={null} persistor={persistor}>
-                    <Sidebar/>
-                    <Chat/>
+                    <Sidebar isVisible={isVisible} toggleIsVisible={toggleIsVisible}/>
+                    <Chat isVisible={isVisible} toggleIsVisible={toggleIsVisible}/>
                     <Notification/>
                 </PersistGate>
             </Provider>
